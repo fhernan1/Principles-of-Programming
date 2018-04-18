@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.Locale;
+import java.util.Scanner;
+public class StudentStanding {
+public static void main(String[] args) throws IOException {
+BufferedReader bufferedReader = new BufferedReader(new
+InputStreamReader(System.in));
+Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+boolean isWorking = true;
+while (isWorking) {
+System.out.print("ID: ");
+int id = scanner.nextInt();
+System.out.print("First name: ");
+String firstName = bufferedReader.readLine();
+System.out.print("Last name: ");
+String lastName = bufferedReader.readLine();
+System.out.print("Grade point average: ");
+double gradePointAverage = scanner.nextDouble();
+System.out.println("Student " + firstName + " " + lastName +
+" with ID " + id + " have " + gradePointAverage + " grade
+point average.");
+if (gradePointAverage >= 2.0) {
+BufferedWriter out = new BufferedWriter(new
+FileWriter("D:\\GoodStanding.txt", true));
+out.write("ID: " + Integer.toString(id));
+out.newLine();
+out.write("First name: " + firstName);
+out.newLine();
+out.write("Last name: " + lastName);
+out.newLine();
+out.write("Grade point average: " +
+Double.toString(gradePointAverage));
+out.newLine();
+out.newLine();
+out.close();
+System.out.println(firstName + " " + lastName + " have grade
+point average > 2.0");
+System.out?.println("This student was saved to
+GoodStanding.txt");
+} else {
+BufferedWriter out = new BufferedWriter(new
+FileWriter("D:\\AcademicProbation.txt", true));
+out.write("ID: " + Integer.toString(id));
+out.newLine();
+out.write("First name: " + firstName);
+out.newLine();
+out.write("Last name: " + lastName);
+out.newLine();
+out.write("Grade point average: " +
+Double.toString(gradePointAverage));
+out.newLine();
+out.newLine();
+out.close();
+System.out.println(firstName + " " + lastName + " have grade
+point average < 2.0");
+System.out.println("This student was saved to
+AcademicProbation.txt");
+}
+System.out.println("Continue? y ­ yes, n ­ no.");
+System.out.print("Answer: ");
+String answer = bufferedReader.readLine();
+if (answer.equals("y")) {
+System.out.println("");
+} else if (answer.equals("n")) {
+scanner.close();
+isWorking = false;
+}
+}
+System.out.println("Finished");
+}
+}
